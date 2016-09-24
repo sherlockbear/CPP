@@ -10,7 +10,7 @@ struct CArray                                            				//定义扩展数�
 void array_initial(CArray &arr, const int cap = 20)        				//数组初始化
 {
     arr.capacity = cap;
-    arr.buff = new int(arr.capacity);
+    arr.buff = new int[arr.capacity];
     arr.size = 0;
 }
 
@@ -22,7 +22,7 @@ int array_capacity(const CArray arr)                          			//返回数组�
 void array_copy(const CArray arr, CArray &arr2)							//将arr拷贝到arr2
 {
 	array_initial(arr2, arr.capacity);
-	for (int i = 0; i<arr.size; i++)
+	for (int i = 0; i<arr.size; ++i)
 	{
 		*(arr2.buff + i) = *(arr.buff + i);
 	}
@@ -35,12 +35,14 @@ int array_recap(CArray &arr, const int newcap)                   		//重新定�
 		return 1;
 	arr.capacity = newcap;
 	int *newbuff;
-	newbuff = new int(newcap);
-	for (int i = 0; i<arr.size; i++)
+	newbuff = new int[newcap];
+	for (int i = 0; i<arr.size; ++i)
 	{
 		*(newbuff + i) = *(arr.buff + i);
 	}
+	int *oldbuff = arr.buff;
 	arr.buff = newbuff;
+	delete[]oldbuff;
 	#if 0
 	int capaug = newcap - arr.capacity;
 	CArray arr2;
@@ -58,7 +60,7 @@ void array_insert(CArray &arr, const int j, const int ele)    			//在arr index=
 	{
 		array_recap(arr, arr.capacity + 10);
 	}
-	for (int i = arr.size-1; i>j; i--)
+	for (int i = arr.size-1; i>j; --i)
 	{
 		*(arr.buff + i) = *(arr.buff + i - 1);
 	}
@@ -92,9 +94,9 @@ bool array_compare(const CArray arr,const CArray arr2)        			//比较arr和a
 		size = arr.size;
     else
 		size = arr2.size;
-    for(int i=0;i<size;i++)
+    for(int i=0; i<size; ++i)
     {
-        if (array_at(arr, i) ==array_at(arr2,i))
+        if (array_at(arr, i) ==array_at(arr2, i))
 			continue;
         else
 			return false;
