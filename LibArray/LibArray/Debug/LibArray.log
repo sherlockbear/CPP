@@ -1,4 +1,9 @@
 ﻿  CLibArray.cpp
 c:\users\think\desktop\c++\cpp\libarray\libarray\clibarray.cpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+  Generating Code...
+  Compiling...
+  LibArray.cpp
+c:\users\think\desktop\c++\cpp\libarray\libarray\clibarray.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+  Generating Code...
   LibArray.vcxproj -> C:\Users\think\Desktop\C++\CPP\LibArray\Debug\LibArray.exe
   LibArray.vcxproj -> C:\Users\think\Desktop\C++\CPP\LibArray\Debug\LibArray.pdb (Full PDB)

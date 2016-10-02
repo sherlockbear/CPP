@@ -106,5 +106,5 @@ bool array_compare(const CArray arr,const CArray arr2)        			//比较arr和a
 
 void array_destroy(CArray &arr)                                 		//清除arr
 {
-	memset(&arr, 0, sizeof(arr));
+	delete []arr.buff
 }
