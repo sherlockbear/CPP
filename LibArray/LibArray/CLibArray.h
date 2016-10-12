@@ -1,18 +1,18 @@
 #ifndef CLib
 #define CLib
 
-struct CArray                                                           //定义扩展数组结构体
+typedef struct                                                          //定义扩展数组结构体
 {
     int *buff;
     int size;
     int capacity;
-};
+}CArray;
 
 void array_initial(CArray &arr, const int cap=20);                      //数组初始化
 
 int array_capacity(const CArray arr);                                   //返回数组容量
 
-void array_copy(const CArray arr, CArray &arr2);                        //将arr拷贝到arr2
+void array_copy(const CArray arr, CArray &arr2, const int capaug = 0);  //将arr拷贝到arr2
 
 int array_recap(CArray &arr, const int cap);                            //重新定义数组容量
 
