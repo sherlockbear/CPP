@@ -2,31 +2,34 @@
 #define CLib
 class CArray
 {
-	private:
+private:
+	int _capacity;
 	int *buff;
-    int size;
-    int capacity;
+	int _size;
 
-void initial(const int cap=20);                      //数组初始化
+	CArray(const int cap = 20):_capacity(cap), buff(new int(_capacity)), _size(0){}
+														//声明一个有参构造函数
+	~CArray();											//析构函数
+	int capacity();										//返回数组容量
 
-int capacity();                                   //返回数组容量
+	int recap(const int cap);							//重新定义数组容量
 
-int recap(const int cap);                            //重新定义数组容量
+	void format(const int cap = 20);        			//数组格式化
 
-void destroy();                                        //清除arr
+	
 
 public:
-int size();                                       //返回数组大小
+	int size();											//返回数组大小
 
-void copy(CArray &arr2);                        //将arr拷贝到arr2
+	void copy(CArray &arr,const int capaug = 0);		//将当前数组拷贝到arr
 
-void insertconst int j, const int ele);             //在arr index=i的位置插入元素ele
+	void insert(const int j, const int ele);			//在index=i的位置插入元素ele
 
-void append(const int ele);                          //增加元素
-    
-int& at(const int j=0);                         //返回在位置i的元素 
+	void append(const int ele);							//增加元素
 
-bool compare(const CArray arr,const CArray arr2);                 //比较arr和arr2
-}
+	int& at(const int j = 0);							//返回在位置i的元素 
+
+	bool compare(const CArray arr2);					//比较当前数组和arr
+};
 
 #endif
