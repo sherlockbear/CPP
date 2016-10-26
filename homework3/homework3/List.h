@@ -8,7 +8,8 @@ private:
 	ListNode* _next;
 
 public:
-	ListNode():
+	ListNode(ListNode* next):
+		_next(next)
 	{}
 
 	~ListNode();
