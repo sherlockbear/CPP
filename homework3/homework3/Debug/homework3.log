@@ -1,0 +1,9 @@
+﻿  stdafx.cpp
+  List.cpp
+f:\桌面\c++\cpp\homework3\homework3\list.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+  CPPList.cpp
+f:\桌面\c++\cpp\homework3\homework3\cpplist.cpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+f:\桌面\c++\cpp\homework3\homework3\list.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+  Generating Code...
+  homework3.vcxproj -> F:\桌面\C++\CPP\homework3\Debug\homework3.exe
+  homework3.vcxproj -> F:\桌面\C++\CPP\homework3\Debug\homework3.pdb (Full PDB)

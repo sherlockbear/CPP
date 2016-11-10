@@ -2,129 +2,123 @@
 #include "List.h"
 #include <stdlib.h>
 
-int CPPList::capacity()                          			//è¿”å›æ•°ç»„å®¹é‡
+ListNode::~ListNode()											//Îö¹¹º¯Êı
 {
-	return _capacity;
+	_data = 0;
+	_next = NULL;
+	_previous = NULL;
 }
 
-void CPPList::copy(CPPList &arr)
+CPPList::~CPPList()                                 			//Îö¹¹º¯Êı
 {
-	_capacity = arr.capacity();
-	_size = arr.size();
-	buff = new int[_capacity];
-	for (int i = 0; i<_size; ++i)
-	{
-		*(buff + i) = arr.at(i);
-	}
+	clear();
 }
 
-int CPPList::recap(const int newcap)							//é‡æ–°å®šä¹‰æ•°ç»„å®¹é‡
-{
-	if (newcap < _size)
-		exit(1);
-	_capacity = newcap;
-	int *newbuff;
-	newbuff = new int[newcap];
-	for (int i = 0; i<_size; ++i)
-	{
-		*(newbuff + i) = *(buff + i);
-	}
-	int *oldbuff = buff;
-	buff = newbuff;
-	delete[]oldbuff;
-	#if 0
-	int capaug = newcap - _capacity;
-	CPPList *arr = new CPPList;
-	copy(*arr);
-	//format();
-	(this, capaug);
-	delete arr;
-	return 0;
-	#endif
-}
-
-
-
-int& CPPList::at(const int j)                   			//è¿”å›åœ¨ä½ç½®jçš„å…ƒç´  
-{
-	if (j > _size)
-		exit(1);
-	return *(buff + j);
-}
-
-bool CPPList::compare(CPPList &arr)        					//æ¯”è¾ƒå½“å‰æ•°ç»„å’Œarr
-{
-    int size;
-    if (_size>arr.size())
-		size = _size;
-    else
-		size = arr.size();
-    for(int i=0;i<size;i++)
-    {
-        if (at(i) == arr.at(i))
-			continue;
-        else
-			return false;
-    }
-    return true;
-}
-
-ListNode::~ListNode()
-{
-	;
-}
-
-CPPList::~CPPList()                                 			//ææ„å‡½æ•°
-{
-	delete []buff;
-}
-
-int& ListNode::data()
+int& ListNode::data()											//·µ»Ø½áµãÊı¾İ
 {
 	return _data;
 }
 
-ListNode* ListNode::next()
+int ListNode::data() const										//·µ»Ø½áµãÊı¾İ
+{
+	return _data;
+}
+
+ListNode* &ListNode::next()										//·µ»ØºóÏòÖ¸Õë
 {
 	return _next;
 }
 
-ListNode* CPPList::begin()										//è¿”å›å¤´æŒ‡é’ˆ
+ListNode* ListNode::next() const								//·µ»ØºóÏòÖ¸Õë
+{
+	return _next;
+}
+
+ListNode* &ListNode::previous()									//·µ»ØÇ°ÏòÖ¸Õë
+{
+	return _previous;
+}
+
+ListNode* ListNode::previous() const							//·µ»ØÇ°ÏòÖ¸Õë
+{
+	return _previous;
+}
+
+ListNode* CPPList::begin()										//·µ»ØÍ·Ö¸Õë
 {
 	return _begin;
 }
 
-ListNode* CPPList::end()										//è¿”å›å°¾æŒ‡é’ˆ
+ListNode* CPPList::begin() const								//·µ»ØÍ·Ö¸Õë
+{
+	return _begin;
+}
+
+ListNode* CPPList::end()										//·µ»ØÎ²Ö¸Õë
 {
 	return _end;
 }
 
-int CPPList::size()                               			//è¿”å›é“¾è¡¨å¤§å°
+ListNode* CPPList::end() const									//·µ»ØÎ²Ö¸Õë
+{
+	return _end;
+}
+
+int CPPList::size()                               				//·µ»ØÁ´±í´óĞ¡
 {
 	return _size;
 }
 
-ListNode* CPPList::next(ListNode *current)					//è¿”å›ä¸‹ä¸€ç»“ç‚¹æŒ‡é’ˆ
+ListNode* CPPList::next(ListNode *current)						//·µ»ØÏÂÒ»½áµãÖ¸Õë
 {
 	return current->next();
 }
 
-void CPPList::append(const int ele)								//å¢åŠ å…ƒç´ 
+ListNode* CPPList::next(const ListNode *current) const			//·µ»ØÏÂÒ»½áµãÖ¸Õë
 {
-    insert(_end,ele);
+	return current->next();
 }
 
-void CPPList::insert(ListNode* j, const int ele)    			//åœ¨jä½ç½®æ’å…¥æ•°æ®ä¸ºeleçš„ç»“ç‚¹
+void CPPList::append(const int ele)								//Ôö¼ÓÔªËØ
 {
-	;
+	insert(_end, ele);
 }
 
-void CPPList::clear()											//æ¸…ç©ºé“¾è¡¨
+void CPPList::insert(ListNode* j, const int ele)    			//ÔÚjÎ»ÖÃ²åÈëÊı¾İÎªeleµÄ½áµã
 {
-	;
+	++_size;
+	ListNode* inst = new ListNode(j->previous(),j);
+	inst->data() = ele;
+	if (j->previous() == NULL)
+		_begin = inst;
+	else
+		j->previous()->next() = inst;
+	j->previous() = inst;
 }
 
-void CPPList::remove(ListNode* j)								//ç§»é™¤jä½ç½®ç»“ç‚¹
+void CPPList::clear()											//Çå¿ÕÁ´±í
 {
-	;
+	ListNode *current;
+	int idx;
+	for (idx = 0, current = begin(); current != end(); ++idx)
+	{
+		ListNode *tmp = current;
+		current = next(current);
+		remove(tmp);
+	}
+}
+
+void CPPList::remove(ListNode* j)								//ÒÆ³ıjÎ»ÖÃ½áµã
+{
+	if (j == NULL)
+		return;
+	if (j->previous() == NULL)
+		_begin = j->next();
+	else
+		(j->previous())->next() = j->next();
+	if (j->next() == NULL)
+		return;
+	(j->next())->previous() = j->previous();
+	--_size;
+	delete j;
 }
