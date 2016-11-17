@@ -1,80 +1,90 @@
 #ifndef MATRIX
 #define MATRIX
 
-class ListNode
+#include <vector>
+
+class Matrix
 {
 private:
-	int _data;
-	ListNode* _next;
-	ListNode* _previous;
-
+	std::vector<Vector*> _data;
+	int _rows, _cols;
 public:
-	ListNode(ListNode* previous,ListNode* next):
-		_previous(previous),
-		_next(next)
-	{}													//构造函数
 
-	~ListNode();										//析构函数
-
-	int& data();										//返回结点数据
-
-	int data() const;									//返回结点数据
-
-	ListNode* &next();									//返回后向指针
-
-	ListNode* next() const;								//返回后向指针
-
-	ListNode* &previous();								//返回前向指针
-
-	ListNode* previous() const;							//返回前向指针
-};
-
-class CPPList
-{
-private:
-	int _size;
-	ListNode* _begin;
-	ListNode* _end;
-public:
-	CPPList()
+	Matrix(int row, int column, ValueType data[]) :_rows(row), _cols(column)
 	{
-		_end = _begin =new ListNode(NULL,NULL);
+		for (int i = 0; i < _rows; ++i)
+		{
+			Vector* v = new Vector(_cols,0.0);
+			for (int j = 0; j < _cols; ++j)
+			{
+				((*v)[j]) = data[(i*_cols)+j];
+			}
+			_data.push_back(v);
+		}
+	}													//构造函数
+	
+	Matrix(int row, int column, ValueType data) :_rows(row), _cols(column)
+	{
+		for (int i = 0; i < _rows; ++i)
+		{
+			Vector* v = new Vector(_cols, 0.0);
+			for (int j = 0; j < _cols; ++j)
+			{
+				((*v)[j]) = data;
+			}
+			_data.push_back(v);
+		}
+	}													//构造函数
+	
+	Matrix(Vector data) :_rows(1), _cols(data.size())
+	{
+		Vector* v = new Vector(data);
+		_data.push_back(v);
 	}													//构造函数
 
-	CPPList(CPPList &List)
+	Matrix(Matrix &rhs)
 	{
-		_end = _begin = new ListNode(NULL, NULL);
-		ListNode *current;
-		int idx;
-		for (idx = 0, current = List.begin(); current != List.end(); current = List.next(current), ++idx)
+		_rows = rhs.rows();
+		_cols = rhs.cols();
+		for (int i = 0; i < _rows; ++i)
 		{
-			append(current->data());
+			Vector* v = new Vector(rhs[i]);
+			_data.push_back(v);
 		}
 	}													//拷贝构造函数
 
-	~CPPList();											//析构函数
+	~Matrix();											//析构函数
+#if 0
+	Matrix& operator=(Vector rhs);						//赋值
+#endif
+	Matrix operator+(Matrix &rhs);						//加法
 
-	ListNode* begin();									//返回头指针
+	Matrix operator-(Matrix &rhs);						//减法
+#if 0
+	Matrix operator+(Vector rhs); 						//加法
 
-	ListNode* begin() const;							//返回头指针
+	Matrix operator-(Vector rhs);						//减法
+#endif
+	Matrix operator*(double rhs);						//数乘
 
-	ListNode* end();									//返回尾指针
+	Matrix operator*(Matrix &rhs);						//矩阵乘法
 
-	ListNode* end() const;								//返回尾指针
+	bool operator==(Matrix &rhs);						//等于
 
-	int size();											//返回链表大小
+	bool operator!=(Matrix &rhs);						//不等于
 
-	ListNode* next(ListNode *current);					//返回下一结点指针
+	Matrix operator-();									//取负
 
-	ListNode* next(const ListNode *current) const;		//返回下一结点指针
+	Matrix trans();									//转置
 
-	void append(const int ele);							//增加元素
+	Vector& operator[](int idx);						//取值
 
-	void insert(ListNode* j, const int ele);			//在j位置插入数据为ele的结点
+	int rows();
 
-	void clear();										//清空链表
+	int cols();
 
-	void remove(ListNode* j);							//移除j位置结点
+	
+
+	static Matrix INVALID_MATRIX;
 };
-
 #endif

@@ -1,0 +1,12 @@
+﻿  TestMatrix.cpp
+f:\桌面\c++\cpp\homework4\homework4\testmatrix.cpp : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+f:\桌面\c++\cpp\homework4\homework4\vector.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+f:\桌面\c++\cpp\homework4\homework4\matrix.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+  Generating Code...
+  Compiling...
+  Matrix.cpp
+f:\桌面\c++\cpp\homework4\homework4\vector.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+f:\桌面\c++\cpp\homework4\homework4\matrix.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+  Generating Code...
+  homework4.vcxproj -> F:\桌面\C++\CPP\homework4\Debug\homework4.exe
+  homework4.vcxproj -> F:\桌面\C++\CPP\homework4\Debug\homework4.pdb (Full PDB)
