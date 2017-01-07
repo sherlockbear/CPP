@@ -1,0 +1,19 @@
+﻿  stdafx.cpp
+  UIController.cpp
+  Draw.cpp
+  Box.cpp
+  BlackBoard.cpp
+  正在生成代码...
+Draw.obj : error LNK2005: "public: __thiscall Figure::Figure(int,int,int)" (??0Figure@@QAE@HHH@Z) 已经在 Box.obj 中定义
+Draw.obj : error LNK2005: "public: __thiscall Figure::~Figure(void)" (??1Figure@@QAE@XZ) 已经在 Box.obj 中定义
+Draw.obj : error LNK2005: "public: bool __thiscall Figure::CanMove(int,int)" (?CanMove@Figure@@QAE_NHH@Z) 已经在 Box.obj 中定义
+Draw.obj : error LNK2005: "public: void __thiscall Figure::Move(int,int)" (?Move@Figure@@QAEXHH@Z) 已经在 Box.obj 中定义
+Draw.obj : error LNK2005: "public: void __thiscall Figure::Set(void)" (?Set@Figure@@QAEXXZ) 已经在 Box.obj 中定义
+Draw.obj : error LNK2005: "public: void __thiscall Figure::Spin(void)" (?Spin@Figure@@QAEXXZ) 已经在 Box.obj 中定义
+UIController.obj : error LNK2005: "public: __thiscall Figure::Figure(int,int,int)" (??0Figure@@QAE@HHH@Z) 已经在 Box.obj 中定义
+UIController.obj : error LNK2005: "public: __thiscall Figure::~Figure(void)" (??1Figure@@QAE@XZ) 已经在 Box.obj 中定义
+UIController.obj : error LNK2005: "public: bool __thiscall Figure::CanMove(int,int)" (?CanMove@Figure@@QAE_NHH@Z) 已经在 Box.obj 中定义
+UIController.obj : error LNK2005: "public: void __thiscall Figure::Move(int,int)" (?Move@Figure@@QAEXHH@Z) 已经在 Box.obj 中定义
+UIController.obj : error LNK2005: "public: void __thiscall Figure::Set(void)" (?Set@Figure@@QAEXXZ) 已经在 Box.obj 中定义
+UIController.obj : error LNK2005: "public: void __thiscall Figure::Spin(void)" (?Spin@Figure@@QAEXXZ) 已经在 Box.obj 中定义
+F:\桌面\C++\CPP\homework7\Draw - rusia\Debug\Draw.exe : fatal error LNK1169: 找到一个或多个多重定义的符号
